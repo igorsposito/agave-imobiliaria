@@ -1,0 +1,22 @@
+.section { background: #f8f8f5; padding: 115px 0 105px; color: #071b25; scroll-margin-top: 90px; }
+.container { width: min(calc(100% - 80px), 1400px); margin: 0 auto; }
+.top { display: grid; grid-template-columns: 0.95fr 1.05fr; align-items: center; gap: clamp(45px, 7vw, 115px); }
+.copy { max-width: 590px; }
+.copy h2 { font-size: clamp(38px, 4.4vw, 67px); line-height: 1.08; font-weight: 500; letter-spacing: -0.06em; margin: 0 0 29px; }
+.copy h2 span { color: #087783; }
+.copy p { font-size: clamp(15px, 1.2vw, 17px); line-height: 1.8; color: #63767b; margin: 0 0 17px; }
+.explore { display: inline-flex; align-items: center; gap: 13px; color: #073f46; font-size: 14px; font-weight: 600; margin-top: 20px; text-decoration: none; border-bottom: 1px solid #8ebbb6; padding-bottom: 9px; transition: gap .25s ease, color .25s ease; }
+.explore:hover { gap: 19px; color: #087783; }
+.visual { position: relative; min-height: 510px; border-radius: 26px; overflow: hidden; background: #d7e2de; box-shadow: 0 25px 75px rgba(7,27,37,.08); }
+.image { object-fit: cover; transition: transform .8s ease; }
+.visual:hover .image { transform: scale(1.035); }
+.imageGradient { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(4,23,29,.62), transparent 42%); }
+.imageCaption { position: absolute; left: 32px; right: 32px; bottom: 30px; color: white; font-size: 19px; font-weight: 400; letter-spacing: -.02em; }
+.highlights { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 77px; padding-top: 43px; border-top: 1px solid #dfe7e3; }
+.highlight { padding: 4px 20px 0 0; }
+.icon { display: flex; align-items: center; justify-content: center; width: 49px; height: 49px; border-radius: 15px; background: #e5f1ed; color: #075760; margin-bottom: 23px; }
+.highlight h3 { font-size: 20px; font-weight: 500; letter-spacing: -.035em; margin: 0 0 11px; }
+.highlight p { font-size: 14px; line-height: 1.75; color: #728489; margin: 0; max-width: 350px; }
+@media (max-width: 900px) { .section { padding: 85px 0; } .container { width: calc(100% - 48px); } .top { grid-template-columns: 1fr; gap: 35px; } .copy { max-width: 700px; } .visual { min-height: 420px; } .highlights { gap: 18px; margin-top: 55px; } }
+@media (max-width: 600px) { .section { padding: 70px 0; } .container { width: calc(100% - 32px); } .copy h2 { font-size: clamp(37px, 10vw, 50px); } .visual { min-height: 330px; border-radius: 19px; } .imageCaption { left: 22px; right: 22px; bottom: 23px; font-size: 17px; } .highlights { grid-template-columns: 1fr; gap: 29px; padding-top: 34px; margin-top: 45px; } .icon { margin-bottom: 14px; } }
+@media (prefers-reduced-motion: reduce) { .image, .explore { transition: none; } }

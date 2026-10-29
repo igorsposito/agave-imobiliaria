@@ -1,0 +1,139 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  width: 100%;
+  transform: translateY(0);
+  transition: transform 0.48s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hidden {
+  transform: translateY(calc(-100% - 2px)) !important;
+  pointer-events: none;
+}
+.glass {
+  position: relative;
+  width: 100%;
+  background: rgba(5, 22, 31, 0.76);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  -webkit-backdrop-filter: blur(26px) saturate(165%);
+  backdrop-filter: blur(26px) saturate(165%);
+  box-shadow: 0 8px 32px rgba(0, 10, 16, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0.075), transparent 38%, rgba(0, 220, 232, 0.025));
+}
+.scrolled .glass {
+  background: rgba(5, 22, 31, 0.86);
+  box-shadow: 0 12px 38px rgba(0, 10, 16, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  width: min(calc(100% - 80px), 1400px);
+  height: 90px;
+  margin: 0 auto;
+  transition: height 0.35s ease;
+}
+.scrolled .inner { height: 76px; }
+.brand { display: flex; align-items: center; flex-shrink: 0; }
+.logo { display: block; width: 158px; height: auto; max-height: 64px; object-fit: contain; }
+.navigation { display: flex; align-items: center; justify-content: center; gap: clamp(18px, 2.5vw, 38px); }
+.navigation a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+.navigation a::after {
+  content: "";
+  position: absolute;
+  bottom: -11px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: #00dce8;
+  transform: translateX(-50%);
+  transition: width 0.28s ease;
+}
+.navigation a:hover, .navigation a.active { color: #bafaff; }
+.navigation a:hover::after, .navigation a.active::after { width: 100%; }
+.contactButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  flex-shrink: 0;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: 13px;
+  background: #00dce8;
+  color: #071b25;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.contactButton:hover { background: #7bf5f4; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0, 220, 232, 0.2); }
+.contactButton svg { transition: transform 0.25s ease; }
+.contactButton:hover svg { transform: translate(2px, -2px); }
+.menuToggle { display: none; }
+.mobileNavigation { display: none; }
+@media (max-width: 1050px) {
+  .inner { width: calc(100% - 48px); gap: 18px; }
+  .logo { width: 136px; }
+  .navigation { gap: 17px; }
+  .navigation a { font-size: 12px; }
+  .contactButton { padding: 0 14px; }
+}
+@media (max-width: 850px) {
+  .inner { width: calc(100% - 32px); height: 76px; }
+  .scrolled .inner { height: 68px; }
+  .logo { width: 133px; }
+  .navigation, .contactButton { display: none; }
+  .menuToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.09);
+    color: white;
+    cursor: pointer;
+  }
+  .mobileNavigation {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 16px 18px;
+    background: rgba(5, 22, 31, 0.96);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    -webkit-backdrop-filter: blur(28px);
+    backdrop-filter: blur(28px);
+    box-shadow: 0 20px 40px rgba(0, 15, 25, 0.22);
+  }
+  .mobileNavigation a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 14px;
+  }
+  .mobileNavigation a:last-child { border-bottom: 0; }
+  .mobileNavigation a:hover, .mobileNavigation a.mobileActive { color: #80f2f2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .header, .glass, .inner, .navigation a, .navigation a::after, .contactButton, .contactButton svg { transition: none; }
+}

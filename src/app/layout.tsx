@@ -1,4 +1,6 @@
+
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Outfit } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -13,7 +15,8 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "Ágave Imobiliária | Espaços que inspiram",
-  description: "Projeto conceitual imobiliário desenvolvido pela Ágave Lab.",
+  description:
+    "Projeto conceitual imobiliário desenvolvido pela Ágave Lab.",
 };
 
 export default function RootLayout({
@@ -24,8 +27,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={outfit.variable}>
-        <Header />
+        <Suspense fallback={null}>
+          <Header />
+        </Suspense>
+
         {children}
+
         <Footer />
       </body>
     </html>
